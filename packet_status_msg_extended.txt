@@ -1,0 +1,126 @@
+2018-05-03
+
+If you get this message when using Eaton xComfort CSAU-01/01-16 or CSAU-01/01-10 on/off switch, then you need to use the new protocol layout for these adapters.
+
+May  2 19:31:12 raspberrypi xcomfortd[522]: received MCI_PT_RX(-- unknown --): datapoint: 0 value_type: 57 value: 1566067712 (signal: 74) (battery: unknown)
+
+TRANSMIT PACKET:
+
+sending off to switch behind datapoint 19
+
+requesting status from DP 19 (message id 1, try 0)
+raw buffer[0]: 8 (8)
+raw buffer[1]: c3 (195)
+raw buffer[2]: 1c (28)
+raw buffer[3]: 4 (4)
+raw buffer[4]: 1 (1)
+raw buffer[5]: 0 (0)
+raw buffer[6]: 0 (0)
+raw buffer[7]: 0 (0)
+raw buffer[8]: 0 (0)
+raw buffer[9]: 0 (0)
+raw buffer[10]: 0 (0)
+raw buffer[11]: 0 (0)
+raw buffer[12]: 0 (0)
+raw buffer[13]: 0 (0)
+raw buffer[14]: 0 (0)
+raw buffer[15]: 0 (0)
+raw buffer[16]: 0 (0)
+raw buffer[17]: 0 (0)
+raw buffer[18]: 0 (0)
+raw buffer[19]: 0 (0)
+raw buffer[20]: 0 (0)
+raw buffer[21]: 0 (0)
+raw buffer[22]: 0 (0)
+raw buffer[23]: 0 (0)
+raw buffer[24]: 0 (0)
+raw buffer[25]: 0 (0)
+raw buffer[26]: 0 (0)
+raw buffer[27]: 0 (0)
+raw buffer[28]: 0 (0)
+raw buffer[29]: 0 (0)
+raw buffer[30]: 0 (0)
+raw buffer[31]: 0 (0)
+raw buffer[32]: 28 (40)
+raw buffer[33]: 5f (95)
+raw buffer[34]: ef (239)
+raw buffer[35]: 0 (0)
+raw buffer[36]: 9 (9)
+raw buffer[37]: b1 (177)
+raw buffer[38]: 13 (19) // datapoint
+raw buffer[39]: b (11)
+raw buffer[40]: 0 (0)
+raw buffer[41]: 80 (128)
+raw buffer[42]: fd (253)
+raw buffer[43]: 76 (118)
+raw buffer[44]: 1 (1)
+raw buffer[45]: 0 (0)
+raw buffer[46]: 0 (0)
+raw buffer[47]: 0 (0)
+raw buffer[48]: 0 (0)
+raw buffer[49]: 0 (0)
+Message id 1 acked after 980 ms
+
+RECEIVING STATUS EXTENDED MESSAGE:
+
+raw buffer[0]: 14 (20)
+raw buffer[1]: c1 (193)			// action packet type
+raw buffer[2]: 0 (0) 
+raw buffer[3]: 73 (115)
+raw buffer[4]: 39 (57)
+raw buffer[5]: 0 (0)
+raw buffer[6]: e9 (233)
+raw buffer[7]: 9e (158)
+raw buffer[8]: 5e (94)
+raw buffer[9]: 0 (0)
+raw buffer[10]: 4a (74)
+raw buffer[11]: 4 (4)
+raw buffer[12]: 10 (16) 		// value
+raw buffer[13]: 1c (28)
+raw buffer[14]: 0 (0)
+raw buffer[15]: 0 (0)
+raw buffer[16]: 0 (0)
+raw buffer[17]: 45 (69)			// rssi signal strength
+raw buffer[18]: 10 (16)			// battery state
+raw buffer[19]: 4 (4)
+raw buffer[20]: 0 (0)
+raw buffer[21]: 0 (0)
+raw buffer[22]: 0 (0)
+raw buffer[23]: 0 (0)
+raw buffer[24]: 0 (0)
+raw buffer[25]: 0 (0)
+raw buffer[26]: 0 (0)
+raw buffer[27]: 0 (0)
+raw buffer[28]: 0 (0)
+raw buffer[29]: 0 (0)
+raw buffer[30]: 0 (0)
+raw buffer[31]: 0 (0)
+raw buffer[32]: 28 (40)
+raw buffer[33]: 5f (95)
+raw buffer[34]: ef (239)
+raw buffer[35]: 0 (0)			// value data type
+raw buffer[36]: 9 (9)
+raw buffer[37]: b1 (177)
+raw buffer[38]: 13 (19) 		// datapoint
+raw buffer[39]: b (11)
+raw buffer[40]: 0 (0)
+raw buffer[41]: 80 (128)
+raw buffer[42]: fd (253)
+raw buffer[43]: 76 (118)
+raw buffer[44]: 1 (1)
+raw buffer[45]: 0 (0)
+raw buffer[46]: 0 (0)
+raw buffer[47]: 0 (0)
+raw buffer[48]: 0 (0)
+raw buffer[49]: 0 (0)
+
+raw rx event: 00000073
+raw rx datapoint: 00000000
+raw rx datapoint buff: 00000013
+raw rx data type: 00000039
+raw rx value: 5e9ee900
+raw rx value buff: 16
+raw rx signal: 0000004a
+raw rx battery: 00000004
+
+received MCI_PT_RX(MSG_STATUS_EXT): datapoint: 19 value_type: 0 value: 0 (signal: 69) (battery: powerline)

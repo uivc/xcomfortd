@@ -95,11 +95,13 @@ XCtoMQTT::MessageReceived(mci_rx_event event,
     switch (event)
     {
     case MSG_STATUS:
+    case MSG_STATUS_EXT:
         {
             // Received message that datapoint value changed
 
 	    char topic[128];
 	    char state[128];
+            Info("MQTT publish new MSG_STATUS value\n");
 	    
 	    snprintf(topic, 128, "xcomfort/%d/get/dimmer", datapoint);
 	    snprintf(state, 128, "%d", value);

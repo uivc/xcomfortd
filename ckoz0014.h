@@ -94,7 +94,8 @@ enum mci_rx_event
     MSG_ZU_WARM         = 0x64,
     MSG_STATUS          = 0x70,
     MSG_STATUS_APPL     = 0x71,
-    MSG_STATUS_REQ_APPL = 0x72
+    MSG_STATUS_REQ_APPL = 0x72,
+    MSG_STATUS_EXT = 0x73
 };
 
 /* Commands that can be sent to the stick itself. These are sent with
@@ -231,7 +232,7 @@ struct xc_ci_message
 	    unsigned char  type;
 	    unsigned char  mode;
             int            data;
-	}                  packet_ack;
+	}                  packet_ack; 
     };
 };
 

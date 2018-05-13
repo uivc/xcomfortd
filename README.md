@@ -1,6 +1,9 @@
 xComfort gateway
 ================
 
+Update uivc fork: Added extended status messages, mci_rx_event 0x73.
+At the moment fast and hard fix, but works. Needs to be revised. 
+
 This code implements communication with the Eaton xComfort CKOZ-00/14
 Communication stick (CI stick).  The CI stick needs to be added into
 the network with CKOZ-00/13.

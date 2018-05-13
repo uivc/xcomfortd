@@ -49,6 +49,7 @@ const char* xc_rxevent_name(enum mci_rx_event event)
     case MSG_STATUS:          return "MSG_STATUS";          
     case MSG_STATUS_APPL:     return "MSG_STATUS_APPL";     
     case MSG_STATUS_REQ_APPL: return "MSG_STATUS_REQ_APPL"; 
+    case MSG_STATUS_EXT: return "MSG_STATUS_EXT"; 
     default:                  return "-- unknown --";
     }
 }
@@ -81,6 +82,11 @@ const char* xc_shutter_status_name(int state)
 
 void xc_parse_packet(const char* buffer, size_t size, xc_parse_data* data)
 {
+/*
+   for(int a = 0; a < 50; a = a + 1 ){
+    printf("raw buffer[%d]: %x (%d)\n", a, buffer[a], buffer[a]);
+   }
+*/
     struct xc_ci_message* msg = (struct xc_ci_message*) buffer;
 
     if (size < 2 ||
@@ -90,13 +96,33 @@ void xc_parse_packet(const char* buffer, size_t size, xc_parse_data* data)
     switch (msg->action)
     {
     case MCI_PT_RX:
+/*
+        printf("raw rx event: %08x\n", msg->packet_rx.rx_event);
+        printf("raw rx datapoint: %08x\n", msg->packet_rx.datapoint);
+        printf("raw rx datapoint buff: %08x\n", buffer[38]);
+        printf("raw rx data type: %08x\n", msg->packet_rx.rx_data_type);
+        printf("raw rx value: %08x\n", msg->packet_rx.value);
+        printf("raw rx value buff: %d\n", buffer[12]);
+        printf("raw rx signal: %08x\n", msg->packet_rx.signal);
+        printf("raw rx battery: %08x\n", msg->packet_rx.battery);
+*/
+	if (msg->packet_rx.rx_event == 0x73) { // new status message action packet type
 	data->recv(data->user_data,
 		   (enum mci_rx_event) msg->packet_rx.rx_event,
-		   msg->packet_rx.datapoint,
-		   (enum mci_rx_datatype) msg->packet_rx.rx_data_type,
-		   msg->packet_rx.value,
-		   msg->packet_rx.signal,
-		   (enum mci_battery_status) msg->packet_rx.battery);
+		   buffer[38],
+		   (enum mci_rx_datatype) buffer[9],
+		   buffer[12]/32,
+		   buffer[17],
+		   (enum mci_battery_status) buffer[18]);
+	} else {
+        data->recv(data->user_data,
+                   (enum mci_rx_event) msg->packet_rx.rx_event,
+                   msg->packet_rx.datapoint,
+                   (enum mci_rx_datatype) msg->packet_rx.rx_data_type,
+                   msg->packet_rx.value,
+                   msg->packet_rx.signal,
+                   (enum mci_battery_status) msg->packet_rx.battery);
+	}
 
 	break;
     
